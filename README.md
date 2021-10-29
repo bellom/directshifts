@@ -1,24 +1,41 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Technologies & Tools
+##### React
+##### Redux
+##### Rails
+##### react-create-app
+##### react-rails
+##### npm
+##### material UI
 
-* Ruby version
 
-* System dependencies
+## Installation
 
-* Configuration
+1. Clone the project to your local directory
 
-* Database creation
+```
+git clone https://github.com/bellom/directshifts
+```
 
-* Database initialization
+2. Run `bundle install`
 
-* How to run the test suite
+3. Run `rails db:create`
 
-* Services (job queues, cache servers, search engines, etc.)
+4.   Run `rails db:seed`
 
-* Deployment instructions
+5. Run `rails s -p 3001`
 
-* ...
+6. cd `client` 
+
+7. Run `npm install`
+
+8. Run `npm start` (in another termimal)
+
+## Contact
+
+You can contact me at:
+
+- [Email](bellomsean@gmail.com)
+- [Linkedin](https://www.linkedin.com/in/bellom/)
+- [Twitter](https://twitter.com/bellom)
