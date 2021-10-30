@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
   private
 
-  def respond_with(resource, _opts = {})
+  def respond_with(sign_up_params, _opts = {})
     if resource.persisted?
       render json: {
         status: {code: 200, message: 'Signed up sucessfully.'},
@@ -16,4 +16,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       }, status: :unprocessable_entity
     end
   end
+  
+  def sign_up_params
+    params.require(:user).permit(:email, :first_name, :last_name, :password)
+   end
+
 end
