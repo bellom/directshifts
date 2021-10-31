@@ -7,26 +7,21 @@ import Image from '../img/image.jpg';
 
 
 const LandingPage = () => {
-  // declare a new state variable for modal open
   const [open, setOpen] = useState(false);
   const [openIn, setOpenIn] = useState(false);
 
-  // function to handle modal open
   const handleOpen = () => {
     setOpen(true);
   };
 
-  // function to handle modal close
   const handleClose = () => {
     setOpen(false);
   };
 
-  // function to handle modal open
   const handleOpenIn = () => {
     setOpenIn(true);
   };
 
-  // function to handle modal close
   const handleCloseIn = () => {
     setOpenIn(false);
   };
