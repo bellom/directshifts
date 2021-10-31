@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HomePage = () => {
+  const [redirectTo, setRedirectTo] = useState("");
+
   let history = useHistory();
 
   const callApiLogout = () => {
@@ -39,11 +41,33 @@ const HomePage = () => {
         console.dir(json);
       })
       .catch((err) => console.error(err));
-      history.push('/');
+    history.push("/");
   };
 
   const classes = useStyles();
 
+  useEffect(() => {
+    fetch("http://localhost:3001/current_user", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        setRedirectTo(true);
+      }
+    })
+    .then((json) => console.dir(json))
+    .catch((err) => console.error(err));
+  });
+  
+  if(redirectTo){
+    return <Redirect to="/" />
+  }
+  
   return (
     <AppBar position="static">
       <Toolbar>
