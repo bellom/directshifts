@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HomePage = () => {
   const [redirectTo, setRedirectTo] = useState("");
+  const [currentUserEmail, setCurrentUserEmail] = useState("");
 
   let history = useHistory();
 
@@ -60,14 +61,14 @@ const HomePage = () => {
         setRedirectTo(true);
       }
     })
-    .then((json) => console.dir(json))
+    .then((json) => setCurrentUserEmail((json.email)))
     .catch((err) => console.error(err));
   });
   
   if(redirectTo){
     return <Redirect to="/" />
   }
-  
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -82,6 +83,7 @@ const HomePage = () => {
         <Typography variant="h6" className={classes.title}>
           DirectShifts
         </Typography>
+        { currentUserEmail}
         <Button color="inherit" onClick={callApiLogout}>
           Logout
         </Button>
