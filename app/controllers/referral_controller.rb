@@ -1,6 +1,8 @@
 class ReferralController < ApplicationController
+
   def create
-    @referral = Referral.create(referral_params.merge(user_id: current_user))
+    # @referral = Referral.create(referral_params.merge(user_id: current_user))
+    @referal = Referral.new(referral_params)
     if @referal.save
       render json: @referal, status: :ok, location: @referal
     else
@@ -9,17 +11,14 @@ class ReferralController < ApplicationController
   end
 
   def index
-    @referals = Referral.where(user_id: current_user)
-    render json: @referals
+    # @referrals = Referral.where(user_id: current_user.id)
+    @referrals = Referral.all 
+    render json: @referrals, only: [:id, :email, :user_id]
   end
 
   private 
 
   def referral_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :user_id)
   end
-
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-   end
 end

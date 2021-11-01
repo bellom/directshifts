@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
 import FormReferral from "./FormReferral";
+import ReferredList from "./ReferredList";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -93,7 +94,9 @@ const HomePage = () => {
         </Toolbar>
       </AppBar>
       <FormReferral></FormReferral>
+      <ReferredList></ReferredList>
       
+
     </div>
   );
 };
