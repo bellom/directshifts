@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/current_user', to: 'current_user#index'
   get '/referrals', to: 'referral#index'
-  post '/referral', to: 'referral#create'
+  post '/referrals', to: 'referral#create'
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',

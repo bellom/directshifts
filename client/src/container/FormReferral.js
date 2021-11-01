@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const FormReferral = () => {
   const classes = useStyles();
   const [email, setEmail] = useState("");
@@ -35,24 +34,23 @@ const FormReferral = () => {
         Authorization: localStorage.getItem("token"),
       },
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((json) => setUserId(json.id))
       .catch((err) => console.error(err));
   });
 
   const callApiReferral = () => {
-    let userData = { email, user_id };
+    let data = { email, user_id };
 
-    fetch("http://localhost:3001/referral", {
+    fetch("http://localhost:3001/referrals", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({user: userData}),
+      body: JSON.stringify({ referral: data }),
     })
       .then((res) => {
         if (res.ok) {
-          localStorage.setItem("token", res.headers.get("Authorization"));
           return res.json();
         } else {
           throw new Error(res);
@@ -78,16 +76,14 @@ const FormReferral = () => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <div>
-        <Button variant="contained">
-          Cancel
-        </Button>
+        <Button variant="contained">Cancel</Button>
         <Button
           style={{ backgroundColor: "#3f51b5" }}
           type="submit"
           variant="contained"
           color="primary"
         >
-          Referral 
+          Referral
         </Button>
       </div>
     </form>

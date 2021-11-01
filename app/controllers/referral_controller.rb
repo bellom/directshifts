@@ -1,11 +1,11 @@
 class ReferralController < ApplicationController
 
   def create
-    @referal = Referral.new(referral_params)
-    if @referal.save
-      render json: @referal, status: :ok, location: @referal
+    @referral = Referral.new(referral_params)
+    if @referral.save
+      render json: @referral, status: :ok, location: @referral
     else
-      render json: @referal.errors, status: :unprocessable_entity
+      render json: @referral.errors, status: :unprocessable_entity
     end
   end
 
@@ -17,6 +17,6 @@ class ReferralController < ApplicationController
   private 
 
   def referral_params
-    params.require(:user).permit(:email, :user_id)
+    params.require(:referral).permit(:email, :user_id)
   end
 end
