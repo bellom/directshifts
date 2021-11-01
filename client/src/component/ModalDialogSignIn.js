@@ -4,9 +4,7 @@ import FormSignIn from '../container/FormSignIn';
 
 const ModalDialogSignIn = ({ openIn, handleCloseIn }) => {
   return (
-    // props received from App.js
     <Dialog open={openIn} onClose={handleCloseIn}>
-      {/* form to be created */}
       <FormSignIn handleCloseIn={handleCloseIn} />
     </Dialog>
   );
