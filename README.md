@@ -22,15 +22,17 @@ git clone https://github.com/bellom/directshifts
 
 3. Run `rails db:create`
 
-4.   Run `rails db:seed`
+4. Run `Rails db:migrate`
 
 5. Run `rails s -p 3001`
 
-6. cd `client` 
+6. Open another terminal
 
-7. Run `npm install`
+7. cd `client` 
 
-8. Run `npm start` (in another termimal)
+8. Run `npm install`
+
+9. Run `npm start`
 
 ## Contact
 

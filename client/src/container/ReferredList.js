@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const ReferredList = () => {
   const classes = useStyles();
   const [currentUserId, setCurrentUserId] = useState("");
@@ -27,11 +26,11 @@ const ReferredList = () => {
 
   useEffect(() => {
     fetch("http://localhost:3001/referrals", { method: "get" })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((json) => setReferredList(json))
       .catch((err) => console.error(err));
-  }, [])
-  
+  }, []);
+
   useEffect(() => {
     fetch("http://localhost:3001/current_user", {
       headers: {
@@ -40,21 +39,22 @@ const ReferredList = () => {
         Authorization: localStorage.getItem("token"),
       },
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((json) => setCurrentUserId(json.id))
       .catch((err) => console.error(err));
   });
 
-  console.log("list of referred:", typeof referredList, currentUserId)
+  console.log("list of referred:", typeof referredList, currentUserId);
 
   return (
     <div className={classes.root}>
       List of referred users
       <ul>
-      {
-        Object.values(referredList).filter(e => e.user_id === currentUserId)
-                    .map(i => <li>{i.email}</li>)
-      }
+        {Object.values(referredList)
+          .filter((e) => e.user_id === currentUserId)
+          .map((i) => (
+            <li>{i.email}</li>
+          ))}
       </ul>
     </div>
   );
