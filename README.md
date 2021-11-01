@@ -8,6 +8,7 @@
 ##### react-rails
 ##### npm
 ##### material UI
+##### Devise
 
 
 ## Installation

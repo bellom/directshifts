@@ -3,7 +3,7 @@ class ReferralController < ApplicationController
   def create
     @referral = Referral.new(referral_params)
     if @referral.save
-      render json: @referral, status: :ok, location: @referral
+      render json: @referral, status: :ok
     else
       render json: @referral.errors, status: :unprocessable_entity
     end

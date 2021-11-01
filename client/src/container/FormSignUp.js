@@ -31,8 +31,8 @@ const FormSignUp = ({ handleClose }) => {
   const [password, setPassword] = useState("");
 
   let history = useHistory();
-
-  const callApiSignUp = () => {
+  
+  const callApiSignUp = async () => {
     let userData = { first_name, last_name, email, password };
 
     fetch("http://localhost:3001/signup", {
@@ -44,22 +44,19 @@ const FormSignUp = ({ handleClose }) => {
     })
       .then((res) => {
         if (res.ok) {
-          console.log(res.headers.get("Authorization"));
           localStorage.setItem("token", res.headers.get("Authorization"));
+          history.push('/home');
           return res.json();
         } else {
           throw new Error(res);
         }
       })
-      .then((json) => console.dir(json))
       .catch((err) => console.error(err));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     callApiSignUp();
-    handleClose();
-    history.push('/home');
   };
 
   return (

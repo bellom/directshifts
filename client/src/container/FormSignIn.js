@@ -53,7 +53,6 @@ const FormSignIn = ({ handleCloseIn }) => {
           return res.text().then((text) => Promise.reject(text));
         }
       })
-      .then((json) => console.dir(json))
       .catch((err) => console.error(err));
   };
 

@@ -40,9 +40,6 @@ const HomePage = () => {
           return res.json().then((json) => Promise.reject(json));
         }
       })
-      .then((json) => {
-        console.dir(json);
-      })
       .catch((err) => console.error(err));
     history.push("/");
   };

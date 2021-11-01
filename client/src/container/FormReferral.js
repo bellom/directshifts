@@ -49,19 +49,10 @@ const FormReferral = () => {
       },
       body: JSON.stringify({ referral: data }),
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error(res);
-        }
-      })
-      .then((json) => console.dir(json))
       .catch((err) => console.error(err));
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     callApiReferral();
   };
 
@@ -76,7 +67,6 @@ const FormReferral = () => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <div>
-        <Button variant="contained">Cancel</Button>
         <Button
           style={{ backgroundColor: "#3f51b5" }}
           type="submit"

@@ -44,8 +44,6 @@ const ReferredList = () => {
       .catch((err) => console.error(err));
   });
 
-  console.log("list of referred:", typeof referredList, currentUserId);
-
   return (
     <div className={classes.root}>
       List of referred users
@@ -53,7 +51,7 @@ const ReferredList = () => {
         {Object.values(referredList)
           .filter((e) => e.user_id === currentUserId)
           .map((i) => (
-            <li>{i.email}</li>
+            <li key={i.id}>{i.email}</li>
           ))}
       </ul>
     </div>
